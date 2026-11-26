@@ -11,7 +11,7 @@ function CartPay() {
     const objClient = { nameTitular: '', creditCard: '', lastDate: '', verificationCode: '', quotes: 0 };
     const { itemCard, itemClear, stepUpdate, purchaseOrder, purchaseOrderAdd } = useContext(CartContext);
     const [buyId, setBuyId] = useState('');
-    const [orderPay, setOrderPay] = useState({...itemCard});
+    const [orderPay] = useState({...itemCard});
 
     const Formik = useFormik({
         initialValues: objClient,

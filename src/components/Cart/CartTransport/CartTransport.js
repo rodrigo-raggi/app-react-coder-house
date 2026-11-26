@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { Divider, Form, Button, Header, Icon } from 'semantic-ui-react'
-import Swal from 'sweetalert2'
 import { CartContext } from 'context/CartContext';
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -9,9 +8,9 @@ import { addOrder } from 'mock/api';
 
 function CartTransport() {
     const objClient = { name: '', lastName: '', email: '', repeatEmail: '', address: '', phone: '', termsOfService: false };
-    const { itemCard, itemClear, stepUpdate } = useContext(CartContext);
+    const { itemCard, stepUpdate } = useContext(CartContext);
     // const [buyId, setBuyId] = useState('');
-    const [buyedProducts, setBuyedProducts] = useState({...itemCard});
+    const [buyedProducts] = useState({...itemCard});
 
     const Formik = useFormik({
         initialValues: objClient,
