@@ -15,6 +15,13 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- Fuentes: preconnect + link en el HTML (antes era @import en index.css, que retrasaba la descarga). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"
+    />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -27,6 +34,20 @@
     <title>La Magina Di Victoria</title>
   </head>
   <body>
+    <!-- Aplica el tema antes del primer pintado para evitar el parpadeo claro/oscuro. -->
+    <script>
+      (function () {
+        var dark;
+        try {
+          var stored = localStorage.getItem('darkMode');
+          if (stored !== null) dark = JSON.parse(stored) === true;
+        } catch (e) {}
+        if (dark === undefined) {
+          dark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        }
+        document.body.classList.add(dark ? 'dark-mode' : 'light-mode');
+      })();
+    </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
